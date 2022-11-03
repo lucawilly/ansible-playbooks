@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{label_app}}-svc" # Sets service name
+  namespace: "{{namespace_name}}"
+  labels:
+    app: "{{label_app}}" # Labels and Selectors
+spec:
+ type: NodePort # Sets service type
+ ports:
+   - name: "{{label_app}}-tcp"
+     port: 5432
+ selector:
+   app: "{{label_app}}"

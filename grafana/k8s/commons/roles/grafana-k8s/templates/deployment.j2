@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{label_app}}"
+  namespace: "{{namespace_name}}"
+  labels:
+    app: "{{label_app}}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{label_app}}"
+  template:
+    metadata:
+      labels:
+        app: "{{label_app}}"
+    securityContext:
+        fsGroup: 472
+        supplementalGroups:
+          - 0         
+    spec:    
+      containers:
+        - name: "{{label_app}}-nginx"
+          image: nginx:1.23.1
+          imagePullPolicy: "Always"
+          resources:
+            requests:
+               cpu: 250m
+               memory: 800Mi
+            limits:
+               cpu: 500m
+               memory: 1000Mi
+          #readinessProbe:
+          #  tcpSocket:
+          #    port: 5432
+          #  initialDelaySeconds: 30
+          #  periodSeconds: 10
+          #livenessProbe:
+          #  tcpSocket:
+          #    port: 5432
+          #  initialDelaySeconds: 30
+          #  periodSeconds: 10
+          ports:
+            - containerPort: 80
+              name: http-webserver
+              protocol: TCP
+            - containerPort: 443
+              name: https-webserver
+              protocol: TCP  
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d/default.conf
+              name: nginx-conf-v
+              subPath: default.conf    
+            - name: "{{label_app}}-cert"
+              mountPath: "/usr/local"
+              readOnly: true
+        - name: "{{label_app}}-backend"
+          image: grafana/grafana:9.1.0
+          imagePullPolicy: "Always"
+          resources:
+            requests:
+               cpu: 250m
+               memory: 800Mi
+            limits:
+               cpu: 500m
+               memory: 1000Mi
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /robots.txt
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          livenessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 30
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 1
+            periodSeconds: 10
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: "{{label_app}}-pv"
+      volumes:
+          - name: "{{label_app}}-pv"
+            persistentVolumeClaim:
+              claimName: "{{volume_claim_name}}"
+          - name: "{{label_app}}-cert"
+            secret:
+              secretName: "{{label_app}}-secret"
+              items:
+              - key: tls.crt
+                path: local.crt
+              - key: tls.key
+                path: local.key      
+          - name: nginx-conf-v
+            configMap:
+              name: "{{label_app}}-config"
+              items:
+                - key: nginx-vhost.conf
+                  path: default.conf

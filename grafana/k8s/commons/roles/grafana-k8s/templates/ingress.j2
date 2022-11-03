@@ -1,0 +1,24 @@
+   
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "{{label_app}}-ingress"
+  namespace: "{{namespace_name}}"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - hosts:
+        - grafana.local
+      secretName: "{{label_app}}-secret"
+  rules:    
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: "{{label_app}}-svc"
+            port:
+              number: 8080              

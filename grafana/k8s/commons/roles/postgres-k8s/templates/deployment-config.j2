@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{label_app}}"
+  namespace: "{{namespace_name}}"
+  labels:
+    app: "{{label_app}}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{label_app}}"
+  template:
+    metadata:
+      labels:
+        app: "{{label_app}}"    
+    spec:    
+      containers:
+        - name: "{{label_app}}-container"
+          image: "{{postgres_image}}"
+          imagePullPolicy: "Always"
+          env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "{{label_app}}-secret"
+                key: postgres-password
+          resources:
+            requests:
+               cpu: 250m
+               memory: 800Mi
+            limits:
+               cpu: 500m
+               memory: 1000Mi
+          readinessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb  
+      volumes:
+          - name: postgredb
+            persistentVolumeClaim:
+              claimName: "{{volume_claim_name}}"

@@ -1,0 +1,6 @@
+---
+- name: Create Service for Postgres Database into {{namespace_name}}
+  kubernetes.core.k8s:
+    state: present
+    template:
+      path: 'service.j2'

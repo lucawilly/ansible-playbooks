@@ -1,0 +1,7 @@
+---
+- name: Create Ingress Route for "{{label_app}}"
+  kubernetes.core.k8s:
+     state: present
+     template:
+       path: 'ingress.j2'
+       

@@ -1,0 +1,11 @@
+- name: Postgres deployment
+  hosts: local
+  connection: local
+  vars:
+    postgres_password: postgres_password
+  vars_files:
+   - commons/vars.yml
+  collections:
+    - kubernetes.core
+  roles:
+    - postgres-k8s

@@ -1,0 +1,20 @@
+---
+ - name: Create a persistent volume
+   k8s:
+      state: present
+      definition:
+        apiVersion: v1
+        kind: PersistentVolume
+        metadata:
+          name: "{{volume_persistent_name}}"
+          namespace: "{{namespace_name}}"
+          labels:
+            type: "{{volume_type}}"
+        spec:
+          storageClassName: "{{storage_classname}}"
+          capacity:
+              storage: "{{storage}}"
+          accessModes:
+              - "{{access_mode}}"
+          hostPath:
+              path: "{{hostPath}}"

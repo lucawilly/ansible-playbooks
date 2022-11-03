@@ -1,0 +1,5 @@
+---
+dependencies:
+  - role: persistent-volume-k8s
+    vars_files:
+     - vars/main.yml

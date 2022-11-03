@@ -1,0 +1,7 @@
+---
+
+- name: Create a claim volume "{{namespace_name}}"
+  kubernetes.core.k8s:
+    state: present
+    template:
+      path: 'claim.j2'

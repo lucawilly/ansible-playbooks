@@ -1,0 +1,9 @@
+- name: Grafana deployment
+  hosts: local
+  connection: local
+  vars_files:
+   - commons/vars.yml
+  collections:
+    - kubernetes.core
+  roles:
+    - grafana-k8s

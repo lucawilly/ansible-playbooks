@@ -1,0 +1,5 @@
+  - name: Create Deployment for Nginx and Grafana
+    kubernetes.core.k8s:
+      state: present
+      template:
+         path: 'deployment.j2'

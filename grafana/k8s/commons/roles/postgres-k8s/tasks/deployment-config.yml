@@ -1,0 +1,5 @@
+- name: Create Deployment for Postgres Database
+  kubernetes.core.k8s:
+      state: present
+      template:
+         path: 'deployment-config.j2'

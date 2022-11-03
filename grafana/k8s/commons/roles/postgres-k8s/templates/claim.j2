@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: "{{volume_claim_name}}"
+  namespace: "{{namespace_name}}"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi     
+  selector:
+    matchLabels:
+      volume: "{{volume_persistent_name}}"

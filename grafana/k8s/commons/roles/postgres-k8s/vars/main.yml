@@ -1,0 +1,9 @@
+volume_persistent_name: postgres-data-test
+volume_claim_name: postgres-data-claim-auto
+hostPath: /mnt/postgres/local/data
+volume_type: local
+storage_classname: manual
+storage: 10Gi
+access_mode: ReadWriteOnce
+label_app: postgres-backend
+postgres_image: postgres:14.5

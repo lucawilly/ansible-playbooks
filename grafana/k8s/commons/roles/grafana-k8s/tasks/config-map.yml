@@ -1,0 +1,6 @@
+---
+- name: ConfigMap map for "{{label_app}}"
+  kubernetes.core.k8s:
+     state: present
+     template:
+        path: 'config-map.j2'

@@ -1,0 +1,53 @@
+label_app: grafana-app
+volume_persistent_name: grafana-data-test
+volume_claim_name: grafana-data-claim-auto
+hostPath: /mnt/grafana/local/data
+volume_type: local
+storage_classname: manual
+storage: 10Gi
+access_mode: ReadWriteOnce
+server_crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURBekNDQWV1Z0F3SUJBZ0lKQU00REtxd21NZFQxTUEwR0NTcUdTSWIzRFFFQkN3VUFNQmd4RmpBVUJnTlYKQkFNTURXZHlZV1poYm1FdWJHOWpZV3d3SGhjTk1qSXdPVEk0TVRrMU5EUTJXaGNOTWpNd09USTRNVGsxTkRRMgpXakFZTVJZd0ZBWURWUVFEREExbmNtRm1ZVzVoTG14dlkyRnNNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DCkFROEFNSUlCQ2dLQ0FRRUExVE14WWgxS2VYVkU1cjgrc0RUY1hRYkVBQWdTREM3SzNvREJacHd5L1FFQ0JEcTMKRzJXRDRrb0I0MUIzY0tjSmJWUCs3ZndwL1RWdjM5Q2hiTE5BNUM2YXpUWXBUWnA3TldueXRUN05jRXZzYmZMQgp2OWlkQnh3bFZZdTgyYWE0WE5sWmgydytUcTYxbTJ1NWdoNWN3cHNOSHpwVmNueGl6N1ZCMVNUVjF2cnlDLzBICk5oR3U4R0J2TDdDVFRkYWFYSFkwNGZEaEQwWmtydzN3RnROVUlGelVGaEc5aEZURi9GZzVlSVdVdThGUFVxTTIKWUl3YjJnY2JMRWlQRGxsNUtjR0h1WTg3NTdhWFBKd2lyV2tTSWNDd0JMK0ViOERyWG9XUGxSeWFiSVZBeTVCNwpGdW9CZFlHV3VwZSsvd1dveVhSWXdRN2JVd05CSXBZL0phdjgzd0lEQVFBQm8xQXdUakFkQmdOVkhRNEVGZ1FVCnNCaXdUTy9kQm0xMGxoaTVLbzgxUGVJRG0zQXdId1lEVlIwakJCZ3dGb0FVc0Jpd1RPL2RCbTEwbGhpNUtvODEKUGVJRG0zQXdEQVlEVlIwVEJBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQUtWNGVnRW5iYmNQZgpHSitRQ25CWktVMlovdG9tV0ZXbk5iV2pIcHpBcDV4T1JtdkpVUkJZR3NpYUpzcXpUTmxsWEczZTBRamNaZmpuCmxLekcvL3RweTRKOE1hT2ZuTldjeWtiemludWRBVUh5bFVSMmovTmtjaDc0aGpHQUk4V0Nka1FOa3BGWVkvSUUKcjNvYUFFemtrejRVcm10UUNRbTVVc2Nvb0FqRldpdlYzWDAvcnAwNm9hcktWQjcvWGNHYWp6bWtxaStETmozZQptL3AvRVVEVlRCcnh6MmlYVUk0eDZwUmdBdVdWSmoxekZwZ3U5SVc4aDBvNHhmRjVZWG1pN1lvZWwrR0tYNE4vCjA5WFpJdkhaTE1XeDBTZWtoc2I0S1pVY3FVb2VUZk5oVjhpMDVSNjBNTW0zUDNPckZXOWRTRU5maXVkVkRoWXEKUW5DOHZKQjBFdz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+server_key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBMVRNeFloMUtlWFZFNXI4K3NEVGNYUWJFQUFnU0RDN0szb0RCWnB3eS9RRUNCRHEzCkcyV0Q0a29CNDFCM2NLY0piVlArN2Z3cC9UVnYzOUNoYkxOQTVDNmF6VFlwVFpwN05Xbnl0VDdOY0V2c2JmTEIKdjlpZEJ4d2xWWXU4MmFhNFhObFpoMncrVHE2MW0ydTVnaDVjd3BzTkh6cFZjbnhpejdWQjFTVFYxdnJ5Qy8wSApOaEd1OEdCdkw3Q1RUZGFhWEhZMDRmRGhEMFprcnczd0Z0TlVJRnpVRmhHOWhGVEYvRmc1ZUlXVXU4RlBVcU0yCllJd2IyZ2NiTEVpUERsbDVLY0dIdVk4NzU3YVhQSndpcldrU0ljQ3dCTCtFYjhEclhvV1BsUnlhYklWQXk1QjcKRnVvQmRZR1d1cGUrL3dXb3lYUll3UTdiVXdOQklwWS9KYXY4M3dJREFRQUJBb0lCQURaZ1B5a2lCVnVqQURiRgo4aXdvMzBkT3NYQzhualhEUFhTd2JDTktsV3FYOWphejd2MnF6NDlJaHVDK0ppaHlRZUpEZVJLanJPWHEyaVRBClpsdCtBSC95THdORjNCVHg0SmpIOCtJc0tXT0p5YnhsSE90Y1NQaUdRak5tVjMwL20yZjYrMjJodXVhQWdzc28KRjRGTFV5ZERPbjZMZHoyaTRlVE4rd05zeUtseWtlYlRNcGh6emxaRVI0VnBQb0ZpNkl4aTIxcytsSS9ocTMvaApxLzVRa2FacEVZbXFWbHY1blFzWEVBYitucmoxZTN3VjhkNjJKb0JPSWNMU3M2QTIwMnpHcmpvTjZoOTRXYm1JCjJMNTNyVUpOUlNoUjg5L3JhU1VPQzFrbzZ4NUEwa2xPcVB4NDZITUtkRzBQQmR1S1BVeG0wN09yTlhmVDhJQTgKTE52eW9URUNnWUVBL3ZzODlwVm1nY0ZLTkJqTDcwbTVzMHJHa1hVbUdZcWtzQWVoYzlaOTVLN015NEdSbVM1aApUdWtaWHhoOTBkNEpDdW5HaUZMSFhNek1GYWRPb0llc0RCaWJyNlVPSUl3SG8xT0ViOUxFM2RsV1E1ZHRIYnNQCmprZkU1TFNNdmxSSlJTUkVVcGQ0enAvQXRhRytVUTJ0cC9QMmFaNHpZUUFBT0JreUt6ZHRQOWtDZ1lFQTFnMDUKNU54c2hnOGs5N2lOZnd6R2NuZVBKSVM3T01FajFod3Y2Z1N2ck4vdVdRR2NWbW0xWkFyZHhBZGZzVHFlK1hKSwpNOHR6cGFMYXA2YWlBMjdpcXlXclNlamFUVmVpQWhSR0ZkVjVQNHBIcWxxdVhrakNjSVJveDg0aUdxQWxUc1RyCkxPZ2NTa2l1M0dyK3lSUEJveWR0cXRvSWVSRmM3c2g1SHJuclozY0NnWUVBaGVXSzh2WXJlVEgyZEhzZEJKQlQKbXdwR1VmWVJ4dEhlZjYzU0k5RmNGTzJTRDcvL3BGQU51M0YrNkVnbE1rTUZ2cHhhckJYRUtVQkdYNHlYSm9kNApXblhGczZ2YVNrOGVaNjhnMmRQMW00WlkzVyswVml0NEZNQXRiZWcrREdpWWZWMTVIMkg1aDQrdWsvTFd6UnVBCnVMVE5EbE9NS1lEbG5JL21uM2tndnFrQ2dZQngyYk1UWVpKdmM1cXNFQU5pc2o3VEgzaUphZmZTNWhmVGlFYUwKNkZZd1V5TUpRR3dSSWtTU281ejA2UjhpdXhWWGhFeW5ZKzF0Q2tQV3JEQzhOcnhsWDdITnJBYUE0TDJROFl1ZApqVi9pUmdCOFFhTkJEdDRzenFDVXRiVTZDRGdQdjNsKzl5NGs3S2ZsSVJ2SGc3U1l2UjM5bzk2aDFuUmhwVXVXCjVqaXBYUUtCZ0VhRm8yaVN1MGJ1VnQrOWh2Q25YQ1NLQWNReWVuSXNpdCt6R08wdlVTMU40UXdwNlM2SXk4bXcKdXI2MEJWY283SW94M0dWdzFsVWw4RW1hSXFlSHNiRXQyY2krbmdSMWlaQ3dLUDFDeTZzenRUandIM3BYU3lidAozOW9CaFcvbTZoOXdUMTVYR2N6T2ZldmdobThqcHpzNko5djl4T1REMlJrZkFHZE5hK1krCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==   
+ngxin_vhost: |
+        map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+        }
+        upstream grafana {
+        server localhost:3000;
+        }
+
+        server {
+         listen 80;
+         listen 443 ssl;
+         ssl off;
+         ssl_certificate      /usr/local/local.crt;
+         ssl_certificate_key  /usr/local/local.key;
+         server_name _;
+         return 403;
+        }
+
+
+        server {
+         listen 80;
+         listen 443 ssl;
+         ssl off;
+         ssl_certificate     /usr/local/local.crt;
+         ssl_certificate_key /usr/local/local.key;
+         ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+         ssl_ciphers         HIGH:!aNULL:!MD5;
+         server_name grafana.local
+         root /usr/share/nginx/html;
+         index index.html index.htm;
+         location / {
+         proxy_set_header Host $http_host;
+         proxy_pass http://grafana;
+        }
+        location /api/live/ {
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $http_host;
+        proxy_pass http://grafana;
+        }
+        }

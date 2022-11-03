@@ -1,0 +1,7 @@
+---
+  #- include_tasks: claim-volume.yml
+  - include_tasks: config-map.yml
+  - include_tasks: secret.yml
+  - include_tasks: deployment-config.yml
+  - include_tasks: service.yml
+  - include_tasks: ingress.yml                                                
